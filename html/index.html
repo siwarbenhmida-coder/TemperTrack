@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Affichage des Données du Capteur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .data-display {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .data-display p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Affichage des Données du Capteur</h1>
+
+        <!-- Section pour afficher les données en temps réel -->
+        <div class="data-display" id="data-display">
+            <h2>Données Actuelles :</h2>
+            <p><strong>Température :</strong> <span id="temp">En attente...</span></p>
+            <p><strong>Humidité :</strong> <span id="hum">En attente...</span></p>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour récupérer les données à partir de la base de données via AJAX
+        function fetchData() {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'get_data.php', true); // Fichier PHP pour récupérer les données
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    let response = JSON.parse(xhr.responseText);
+                    if (response.error) {
+                        console.error(response.error);
+                    } else {
+                        // Mettre à jour les données sur la page
+                        document.getElementById('temp').textContent = response.temperature + '°C';
+                        document.getElementById('hum').textContent = response.humidity + '%';
+                    }
+                }
+            }
+            xhr.send();
+        }
+
+        // Récupérer les données toutes les 10 secondes
+        setInterval(fetchData, 10000);
+
+        // Charger les données immédiatement à l'ouverture de la page
+        fetchData();
+    </script>
+</body>
+</html>
