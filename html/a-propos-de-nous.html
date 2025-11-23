@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système de Surveillance de Température pour Aliments</title>
+    <style>
+        body {
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            opacity: 0; /* Start invisible */
+            animation: fadeIn 1s forwards; /* Fade in animation */
+            position: relative; /* Allow positioning of sparkles */
+            background-color: rgb(115, 222, 255);
+            background-image: url("WhatsApp Image 2025-02-26 à 19.32.49_bb50b9be.jpg");
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Fully visible */
+            }
+        }
+        .sparkle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: sparkle 1.5s infinite;
+            opacity: 0; /* Start invisible */
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(1); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        .nav-links {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .nav-links a:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        .Btn {
+            width: 100%; /* Full width of the container */
+            
+            border-radius: 20px;
+            border: none;
+            background-color: rgb(252, 249, 67);
+            color: rgb(0, 0, 0);
+            box-shadow: 0px 10px 10px rgb(252, 249, 67) inset,
+                        0px 5px 10px rgb(252, 249, 67),
+                        0px -10px 10px rgb(252, 249, 67) inset;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bangers', cursive;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-align: center;
+            margin: 5px 0; /* Space above and below each button */
+            transition: transform 0.2s ease; /* Smooth transition */
+        }
+
+        .Btn:hover {
+            transform: scale(1.05); /* Slightly enlarge the button */
+            animation: jello-horizontal 0.9s both;
+        }
+
+      
+
+        .section {
+            width: 90%; /* Ensure the container is wide enough */
+            margin-bottom: 20px;
+            opacity: 0; /* Start invisible */
+            animation: slideIn 0.5s forwards; /* Slide-in animation */
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px); /* Slide from below */
+                opacity: 0; /* Start invisible */
+            }
+            to {
+                transform: translateY(0); /* End at original position */
+                opacity: 1; /* Fully visible */
+            }
+        }
+
+        .section-left {
+            width: 100%; /* Full width for each section */
+            text-align: left; /* Align text to the left */
+            position: relative; /* Allow relative positioning of inner elements */
+            margin-bottom: -40px; /* Space between sections */
+            display: flex; /* Use flexbox to align items */
+            align-items: center; /* Center items vertically */
+        }
+
+        .z, .e, .j {
+            font-size: 18px;
+            color: rgb(255, 255, 255);
+            font-family: cursive;
+            margin-left: 10px; /* Space between image and text */
+            margin-bottom: 33px; /* Space below the heading */
+        }
+
+        .w {
+            width: 10px; /* Smaller size for the images */
+            height: 10px; /* Keep the images square */
+            margin-right: 0px; /* Space between the image and title */
+            vertical-align: middle; /* Align the image vertically */
+            display: inline-block; /* Make sure the image is inline with text */
+        }
+
+        .m {
+            font-size: 10px;
+            color: rgb(0, 0, 0);
+            font-family: cursive;  
+            margin-bottom: -10px; 
+            position: absolute
+        }
+        .a {
+    width: 40px; /* Vous pouvez ajuster la taille ici */
+    position: absolute; /* Utilisation de position absolute pour un placement précis */
+    top: 0; /* Place l'image en haut */
+    right: 250px; /* Place l'image à droite */
+    z-index: 10;
+}
+.ap {
+    width: 40px; /* Vous pouvez ajuster la taille ici */
+    position: absolute; /* Utilisation de position absolute pour un placement précis */
+    top: 0; /* Place l'image en haut */
+    right: 150px; /* Place l'image à droite */
+    z-index: 10;
+}
+.te {
+    width: 40px; /* Vous pouvez ajuster la taille ici */
+    position: absolute; /* Utilisation de position absolute pour un placement précis */
+    top: 0; /* Place l'image en haut */
+    right: 50px; /* Place l'image à droite */
+    z-index: 10;
+}
+
+.star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.8); /* White color for stars */
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: starAnimation 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes starAnimation {
+            0% {
+                transform: scale(0.5) translateY(0);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2) translateY(-30px);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.5) translateY(-60px);
+                opacity: 0;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <a href="project1.html"><img src="page-daccueil.png" class="a"></a>
+    <a href="a-propos-de-nous.html"><img src="a-propos-de-nous.png" class="ap"></a>
+    <a href="contacter-nous.html"><img src="telephoner.png" class="te"></a>
+    <div class="section"> 
+        <div class="section-left">
+            <p class="z">Notre mission</p>
+        </div>
+        <button class="Btn">
+            Notre mission est de garantir la qualité et la sécurité des denrées alimentaires sensibles lors de leur transport, grâce à un contrôle précis de la température en temps réel.
+        </button>
+
+        <div class="section-left">
+            <p class="j">Nos fonctionnalités</p>
+        </div>
+        <button class="Btn">
+            - Suivi en temps réel de la température des camions et conteneurs.<br>
+            - Alertes automatiques en cas de dépassement des seuils de température critique.<br>
+            - Gestion des données historiques pour analyser les conditions de transport.<br>
+            - Interface intuitive et accessible depuis n'importe quel appareil.
+        </button>
+
+        <div class="section-left">
+            <p class="j">Ce qui nous rend spéciaux</p>
+        </div>
+        <button class="Btn">
+            Notre système se distingue par une technologie avancée et fiable, assurant que les aliments périssables sont toujours transportés dans des conditions optimales, réduisant ainsi le gaspillage et préservant la chaîne du froid.
+        </button>
+
+        <div class="section-left">
+            <p class="j">Notre équipe</p>
+        </div>
+        <button class="Btn">
+            Une équipe de spécialistes en logistique et en sécurité alimentaire, passionnée par l'innovation et engagée à offrir des solutions pratiques et efficaces pour l'industrie agroalimentaire.
+        </button>
+
+        <p class="m">
+            N'attendez plus ! Adoptez notre système de surveillance pour garantir la fraîcheur et la sécurité de vos denrées alimentaires, tout au long du transport.
+        </p>
+    </div>
+    <script>
+        // Créer des étoiles dynamiquement
+        const body = document.body;
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // Position aléatoire
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+
+            // Taille aléatoire
+            const size = Math.random() * 10 + 5; // Entre 5px et 15px
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+
+            // Ajouter l'étoile
+            body.appendChild(star);
+
+            // Supprimer l'étoile après l'animation
+            setTimeout(() => {
+                star.remove();
+            }, 3000); // Correspond à la durée de l'animation
+        }
+
+        // Générer des étoiles toutes les 200ms
+        setInterval(createStar, 200);
+    </script>
+
+</body>
+</html>

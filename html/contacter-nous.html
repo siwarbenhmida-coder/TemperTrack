@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+        width: 40px; /* Vous pouvez ajuster la taille ici */
+        position: absolute; /* Utilisation de position absolute pour un placement précis */
+        top: 0; /* Place l'image en haut */
+        right: 250px; /* Place l'image à droite */
+    }
+    .ap {
+        width: 40px; /* Vous pouvez ajuster la taille ici */
+        position: absolute; /* Utilisation de position absolute pour un placement précis */
+        top: 0; /* Place l'image en haut */
+        right: 150px; /* Place l'image à droite */
+    }
+    .te {
+        width: 40px; /* Vous pouvez ajuster la taille ici */
+        position: absolute; /* Utilisation de position absolute pour un placement précis */
+        top: 0; /* Place l'image en haut */
+        right: 50px; /* Place l'image à droite */
+    }
+
+        body {
+            background-color:rgb(115, 222, 255);
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative; /* For sparkles to position absolutely */
+            overflow: hidden; /* Prevent scrollbars caused by sparkles */
+            background-image: url("WhatsApp Image 2025-02-26 à 19.32.49_bb50b9be.jpg");
+        }
+
+        .nav-links {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: rgb(255, 255, 255); 
+            font-family: Arial, sans-serif;
+            font-size: 10px; 
+            font-weight: bold;
+            margin-left: 10px; 
+        }
+
+        .nav-links a:hover {
+            color: rgb(255, 224, 47); 
+        }
+
+        .y,h2 {
+            color: rgb(255, 224, 47);
+            font-family: cursive;
+            width: 700px;
+            
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center the buttons horizontally */
+            gap: 0px; /* Space between the buttons */
+        }
+
+        .Btn {
+            width: 300px;
+            height: 100px;
+            border-radius: 20px;
+            border: 2px solid rgb(253, 253, 253); /* Violet border */
+            background-color: transparent; /* Transparent background */
+            color: rgb(255, 255, 255); /* Violet text */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bangers', cursive;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-align: center;
+            transition: background-color 0.3s, color 0.3s;
+            position: relative; /* For sparkles */
+        }
+
+        .Btn:hover {
+            background-color: rgb(255, 208, 1); /* Background color on hover */
+            color: white; /* Text color on hover */
+        }
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.8); /* White color for stars */
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: starAnimation 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes starAnimation {
+            0% {
+                transform: scale(0.5) translateY(0);
+                opacity: 0.7;
+            }
+            50% {
+                transform: scale(1.2) translateY(-30px);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.5) translateY(-60px);
+                opacity: 0;
+            }
+        }
+        </style>
+</head>
+<body>
+    <a href="project1.html"><img src="page-daccueil.png" class="a"></a>
+    <a href="a-propos-de-nous.html"><img src="a-propos-de-nous.png" class="ap"></a>
+    <a href="contacter-nous.html"><img src="telephoner.png" class="te"></a>
+    <p class="y">
+        <h2>Nous sommes toujours prêts à vous fournir de l'aide !</h2>
+    </p>
+    <p class="y">
+        <h2> Contactez-nous via</h2>
+    </p>
+    
+    <div class="button-container">
+        <button class="Btn">souharabaoui23@gmail.com</button>
+        <button class="Btn">58516102</button>
+    </div>
+    <script>
+        // Créer des étoiles dynamiquement
+        const body = document.body;
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // Position aléatoire
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.top = `${Math.random() * 100}vh`;
+
+            // Taille aléatoire
+            const size = Math.random() * 10 + 5; // Entre 5px et 15px
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+
+            // Ajouter l'étoile
+            body.appendChild(star);
+
+            // Supprimer l'étoile après l'animation
+            setTimeout(() => {
+                star.remove();
+            }, 3000); // Correspond à la durée de l'animation
+        }
+
+        // Générer des étoiles toutes les 200ms
+        setInterval(createStar, 200);
+    </script>
+</body>
+</html>
