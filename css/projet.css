@@ -1,0 +1,582 @@
+/* Styles de base */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff; /* Couleur du ciel */
+    overflow: hidden;
+    animation: background-cycle 10s infinite; /* Applique l'animation */
+}
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.a {
+    width: 40px; /* Vous pouvez ajuster la taille ici */
+    position: absolute; /* Utilisation de position absolute pour un placement précis */
+    top: 0; /* Place l'image en haut */
+    right: 250px; /* Place l'image à droite */
+    z-index: 10;
+}
+.ap {
+    width: 40px; /* Vous pouvez ajuster la taille ici */
+    position: absolute; /* Utilisation de position absolute pour un placement précis */
+    top: 0; /* Place l'image en haut */
+    right: 150px; /* Place l'image à droite */
+    z-index: 10;
+}
+.te {
+    width: 40px; /* Vous pouvez ajuster la taille ici */
+    position: absolute; /* Utilisation de position absolute pour un placement précis */
+    top: 0; /* Place l'image en haut */
+    right: 50px; /* Place l'image à droite */
+    z-index: 10;
+}
+
+.j {
+    width: 500px;
+    transform: scaleX(-1);
+    position: absolute;
+    z-index: 1;
+    bottom: 10%; /* Ajustez cette valeur pour aligner la camionnette sur la route */
+    left: 50%; /* Centre la camionnette horizontalement */
+    transform: translateX(-50%) scaleX(-1); /* Centre la camionnette et conserve le miroir */
+}
+/* Route */
+.road {
+    width: 100%;
+    height: 354px; /* Hauteur de la route */
+    background-color: #333; /* Couleur de l'asphalte */
+    position: absolute;
+    top: 80%; /* Positionne la route au milieu de l'écran */
+    left: 0;
+    transform: translateY(-50%); /* Centre verticalement */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+/* Ligne en tirets */
+.dashed-line {
+    position: absolute;
+    width: 100%; /* Largeur de la ligne */
+    height: 10px; /* Hauteur de la ligne */
+    background: repeating-linear-gradient(
+        to right,
+        white 0%,
+        white 20%,
+        transparent 20%,
+        transparent 40%
+    ); /* Crée des tirets blancs */
+    top: 10%; /* Position verticale au milieu de la route */
+    left: 0;
+    transform: translateY(-50%); /* Centre verticalement */
+    animation: dash 2s linear infinite; /* Animation de défilement */
+}
+
+/* Animation de la ligne en tirets */
+@keyframes dash {
+    0% {
+        transform: translateX(-100%) translateY(-50%); /* Démarre hors de l'écran à gauche */
+    }
+    100% {
+        transform: translateX(100%) translateY(-50%); /* Termine hors de l'écran à droite */
+    }
+}
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Soleil */
+.sun {
+    position: absolute;
+    bottom: -50px; /* Position initiale du soleil (hors écran en bas) */
+    left: 50%; /* Position horizontale du soleil */
+    transform: translateX(-50%);
+    width: 100px; /* Taille du soleil */
+    height: 100px;
+    background-color: #FFD700; /* Couleur du soleil */
+    border-radius: 50%; /* Forme circulaire */
+    box-shadow: 0 0 50px 20px rgba(255, 215, 0, 0.7); /* Effet de lumière */
+    animation: sun-move 10s linear infinite; /* Animation du soleil */
+}
+.moon {
+    position: absolute;
+    bottom: -50px; /* Position initiale de la lune (hors écran en bas) */
+    left: 50%; /* Position horizontale de la lune */
+    transform: translateX(-50%);
+    width: 100px; /* Taille de la lune */
+    height: 100px;
+    background-color: #f0f0f0; /* Couleur de la lune */
+    border-radius: 50%; /* Forme circulaire */
+    box-shadow: 0 0 50px 20px rgba(240, 240, 240, 0.5); /* Effet de lumière */
+    opacity: 0; /* La lune est invisible au départ */
+    animation: moon-move 10s linear infinite; /* Animation de la lune */
+}
+
+/* Animation du soleil */
+@keyframes sun-move {
+    0% {
+        top: 50%; /* Début : soleil hors écran en bas */
+        left: 0; /* Début : côté gauche */
+        opacity: 0; /* Invisible au début */
+    }
+    25% {
+        top: 0%; /* Milieu : soleil au sommet du demi-cercle */
+        left: 50%; /* Milieu : centre horizontal */
+        opacity: 1; /* Visible */
+    }
+    50% {
+        bottom: -1000px; /* Fin : soleil hors écran en bas */
+        left: 100%; /* Fin : côté droit */
+        opacity: 0; /* Invisible à la fin */
+    }
+    75%{
+        bottom: -1000px; /* Fin : soleil hors écran en bas */
+        left: 100%; /* Fin : côté droit */
+        opacity: 0; /* Invisible à la fin */
+    }
+    100% {
+        bottom: -1000px; /* Fin : soleil hors écran en bas */
+        left: 100%; /* Fin : côté droit */
+        opacity: 0; /* Invisible à la fin */
+    } 
+}
+
+/* Animation de la lune (apparition après le soleil) */
+@keyframes moon-move {
+    0% {
+        top: -1000%; /* Début : soleil hors écran en bas */
+        left: 0; /* Début : côté gauche */
+        opacity: 0; /* Invisible au début */
+    }
+    25% {
+        top: -1000%; /* Milieu : soleil au sommet du demi-cercle */
+        left: 50%; /* Milieu : centre horizontal */
+        opacity: 0; /* Visible */
+    }
+    50% {
+        top: 50%; /* Début : soleil hors écran en bas */
+        left: 0; /* Début : côté gauche */
+        opacity: 0; /* Invisible au début */
+    }
+    75% {
+        top: 0%; /* Milieu : soleil au sommet du demi-cercle */
+        left: 50%; /* Milieu : centre horizontal */
+        opacity: 1; /* Visible */
+    }
+    100% {
+        top: 0%; /* Fin : soleil hors écran en bas */
+        left: 100%; /* Fin : côté droit */
+        opacity: 1; /* Invisible à la fin */
+    }   
+}
+
+@keyframes background-cycle {
+    0%, 50% {
+        background-color: #8bebeb; /* Fond clair (ciel bleu) */
+    }
+    50.01%, 100% {
+        background-color: #000033; /* Fond sombre (nuit) */
+    }
+}
+/* Ville */
+
+
+/* Animation de la ville */
+@keyframes light-up {
+    0% {
+        background-color: #98dbe4; /* Ville sombre */
+        box-shadow: 0 -10px 20px rgb(160, 240, 243);
+    }
+    100% {
+        background-color: #ffffff; /* Ville éclairée */
+        box-shadow: 0 -10px 40px rgba(53, 174, 230, 0.911);
+    }
+}
+.building {
+    position: absolute;
+    background-color: #1406928f; /* Couleur des bâtiments */
+    bottom: 0; /* Positionne les bâtiments en bas de la ville */
+    animation: building-light 4s infinite alternate; /* Animation d'éclairage */
+}
+
+
+/* Animation des bâtiments */
+@keyframes building-light {
+    0% {
+        background-color: #5d9eff; /* Bâtiments sombres */
+        box-shadow: 0 0 10px rgba(1, 77, 240, 0.1);
+    }
+}
+.texte{
+    color: #ffffff;
+   bottom: 120px;
+   text-align: center;
+   position:absolute;
+   left:70px;
+   text-align: justify;
+   font-weight: bold
+}
+.h{
+    color: #ffffff;
+   bottom: 110px;
+   text-align: center;
+   position:absolute;
+   left:70px;
+   text-align: justify;
+ 
+}
+.boton {
+    width: 200px;
+    height: 50px;
+    margin: 200px auto;
+    display: block;
+    position: absolute;
+    top: 400px;
+}
+
+.botontext {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    line-height: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.twist {
+    display: block;
+    height: 100%;
+    width: 25%;
+    position: relative;
+    float: left;
+    margin-left: -4px;
+}
+
+.twist:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #fed5a9;
+    bottom: 100%;
+    position: absolute;
+    transform-origin: center bottom 0px; 
+    transform: matrix3d(1, 0, 0, 0, 
+                        0, 0, -1, -0.003, 
+                        0, 1, 0, 0, 
+                        0, 0, 0, 1);
+    
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+-moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+ -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); /* custom */
+}
+
+.twist:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    height: 100%;
+    background: #9f7f5e;
+    transform-origin: center top 0px;
+    transform: matrix3d(1, 0, 0, 0, 
+                        0, 1, 0, 0, 
+                        0, 0, 1, -0.003, 
+                        0, -50, 0, 1);
+    
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+-moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+ -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); /* custom */
+}
+
+.boton:hover .twist:before {
+    background: #fff;
+    transform: matrix3d(1, 0, 0, 0, 
+                        0, 1, 0, 0, 
+                        0, 0, 1, 0.003, 
+                        0, 50, 0, 1);
+}
+
+.boton:hover .twist:after {
+    background: #dedae1;
+    transform: matrix3d(1, 0, 0, 0, 
+                        0, 0, -1, 0.003, 
+                        0, 1, 0, 0, 
+                        0, 0, 0, 1);
+}
+
+.boton .twist:nth-of-type(1) {
+    margin-left: 0;
+}
+
+.boton .twist:nth-of-type(1):before,
+.boton .twist:nth-of-type(1):after {
+    transition-delay: 0s;
+}
+
+.boton .twist:nth-of-type(2):before,
+.boton .twist:nth-of-type(2):after {
+    transition-delay: 0.1s;
+}
+
+.boton .twist:nth-of-type(3):before,
+.boton .twist:nth-of-type(3):after {
+    transition-delay: 0.2s;
+}
+
+.boton .twist:nth-of-type(4):before,
+.boton .twist:nth-of-type(4):after {
+    transition-delay: 0.3s;
+}
+
+.boton .botontext:nth-of-type(1) {
+    color: #3d3b40;
+    bottom: 100%;
+    transform-origin: center bottom 0px; 
+    transform: matrix3d(1, 0, 0, 0, 
+                        0, 0, -1, -0.003, 
+                        0, 1, 0, 0, 
+                        0, 0, 0, 1);
+    
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+-moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+ -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); /* custom */
+}
+
+.boton:hover .botontext:nth-of-type(1) {
+    transform: matrix3d(1, 0, 0, 0, 
+                        0, 1, 0, 0, 
+                        0, 0, 1, 0.003, 
+                        0, 50, 0, 1);
+}
+
+.boton .botontext:nth-of-type(2) {
+    color: #fff;
+    top: 100%;
+    transform-origin: center top 0px;
+    transform: matrix3d(1, 0, 0, 0, 
+                        0, 1, 0, 0, 
+                        0, 0, 1, -0.003, 
+                        0, -50, 0, 1);
+    
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+-moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+ -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); /* custom */
+}
+
+.boton:hover .botontext:nth-of-type(2) {
+    transform: matrix3d(1, 0, 0, 0, 
+                        0, 0, -1, 0.003, 
+                        0, 1, 0, 0, 
+                        0, 0, 0, 1);
+}
+
+/*MENU*/
+
+.square {
+    border: 1px solid #9f7f5e;
+    height: 26px;
+    width: 26px;
+    display: block;
+    margin: 40px auto;
+    transform: rotate(45deg);
+    overflow: hidden;
+    
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+-moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+ -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); /* custom */
+}
+
+
+.square .burgerwrap {
+    height: 18px;
+    width: 21px;
+    transform: rotate(-45deg);
+    padding-left: 5px;
+    padding-top: 8px;
+
+    
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+-moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+ -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); /* custom */
+}
+
+.square:hover {
+    transform: rotate(135deg);
+    border: 1px solid #fff;
+}
+
+.square:hover .burgerwrap {
+    transform: rotate(-135deg)
+}
+
+.square span {
+    height: 2px;
+    width: 14px;
+    background: #9f7f5e;
+    display: block;
+    margin-bottom: 2px;
+    
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+-moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+ -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); /* custom */
+}
+
+.square span:after {
+    content: "";
+    height: 2px;
+    width: 14px;
+    position: absolute;
+    background: #fff;
+    left: -19px;
+    
+-webkit-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+-moz-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+ -o-transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); 
+    transition: all 500ms cubic-bezier(0.970, 0.000, 0.395, 0.995); /* custom */
+}
+
+.square:hover span {
+    margin-left: 26px;
+}
+
+.square:hover span:after {
+    left: 5px;
+}
+
+.square span:nth-of-type(1),
+.square span:nth-of-type(1):after {
+    transition-delay: 0.1s;
+}
+
+.square span:nth-of-type(2),
+.square span:nth-of-type(2):after {
+    transition-delay: 0.2s;
+}
+
+.square span:nth-of-type(3),
+.square span:nth-of-type(3):after {
+    transition-delay: 0.3s;
+}
+/* Styles pour les maisons */
+.house {
+    position: absolute;
+    bottom: 0;
+    z-index: 2; /* Pour s'assurer que les maisons sont au-dessus de la route */
+}
+
+.house-body {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    bottom: 0;
+    background-color: #e67e22; /* Couleur de la maison */
+    border: 2px solid #d35400; /* Bordure pour un effet plus détaillé */
+}
+
+.house-roof {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: 0;
+    background-color: #c0392b; /* Couleur du toit */
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%); /* Toit triangulaire */
+}
+
+.house-window {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    top: 30%;
+    left: 20%;
+    background-color: #ecf0f1; /* Couleur des fenêtres */
+    border: 2px solid #bdc3c7;
+}
+
+.house-door {
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    bottom: 0;
+    left: 40%;
+    background-color: #8e44ad; /* Couleur de la porte */
+    border: 2px solid #6c3483;
+}
+
+.house-chimney {
+    position: absolute;
+    width: 10%;
+    height: 20%;
+    top: 10%;
+    left: 70%;
+    background-color: #7f8c8d; /* Couleur de la cheminée */
+}
+
+/* Styles pour les bâtiments (existants) */
+.building {
+    position: absolute;
+    bottom: 38%;
+    background-color: #34495e;
+    animation: building-light 4s infinite alternate;
+}
+
+.windows {
+    position: absolute;
+    width: 80%;
+    height: 60%;
+    top: 10%;
+    left: 10%;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 10%,
+        #ecf0f1 10%,
+        #ecf0f1 20%
+    );
+}
+
+.door {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    bottom: 0;
+    left: 40%;
+    background-color: #8e44ad;
+}
+
+.roof {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: -10%;
+    background-color: #e67e22;
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+}
+
+/* Animation pour les bâtiments */
+@keyframes building-light {
+    0% {
+        box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(52, 152, 219, 1);
+    }
+}

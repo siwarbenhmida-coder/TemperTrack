@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route avec bandes blanches</title>
+    <link rel="stylesheet" href="projet.css">
+</head>
+<body>
+    <a href="project1.html"><img src="page-daccueil.png" class="a"></a>
+    <a href="a-propos-de-nous.html"><img src="a-propos-de-nous.png" class="ap"></a>
+    <a href="contacter-nous.html"><img src="telephoner.png" class="te"></a>
+    <div class="road">
+        <!-- Ligne en tirets -->
+        <div class="dashed-line"></div>
+    </div>
+    <img src="Design_sans_titre__3_-removebg-preview.png" class="j">
+    <div class="scene">
+        <!-- Soleil -->
+        <div class="sun"></div>
+        <div class="moon"></div>
+        <!-- Ville -->
+        <div class="city">
+            <!-- Bâtiment 1 -->
+            <div class="building" style="height: 200px; width: 70px; left: 8%; background-color: #34495e;">
+                <div class="windows"></div>
+                <div class="door"></div>
+                <div class="roof"></div>
+</div>
+<div class="building" style="height: 250px; width: 60px; left: 15%; background-color: #34495e;">
+    <div class="windows"></div>
+    <div class="door"></div>
+    <div class="roof"></div>
+</div>
+<div class="building" style="height: 220px; width: 60px; left: 23%; background-color: #34495e;">
+    <div class="windows"></div>
+    <div class="door"></div>
+    <div class="roof"></div>
+</div>
+
+
+
+
+</div>
+<div class="building" style="height: 250px; width: 60px; left: 75%; background-color: #34495e;">
+    <div class="windows"></div>
+    <div class="door"></div>
+    <div class="roof"></div>
+</div>
+<div class="building" style="height: 240px; width: 60px; left: 81%; background-color: #34495e;">
+    <div class="windows"></div>
+    <div class="door"></div>
+    <div class="roof"></div>
+</div>
+<div class="building" style="height: 230px; width: 60px; left: 88%; background-color: #34495e;">
+    <div class="windows"></div>
+    <div class="door"></div>
+    <div class="roof"></div>
+</div>
+        </div>
+        <div class="h"> Bienvenue sur TempTrack !<br>
+            Surveillez température et humidité <br>en temps réel grâce à notre solution intelligente. <br>Fiabilité, précision et sérénité <br>à chaque étape du trajet !</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    
+    <a class="square" href="#">
+        <div class="burgerwrap">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </a>
+    
+    <a href="login.php" class="boton">
+        commencer
+    </a>
+    <script>
+        $(window).ready(function(){
+$(".boton").wrapInner('<div class=botontext></div>');
+    
+    $(".botontext").clone().appendTo( $(".boton") );
+    
+    $(".boton").append('<span class="twist"></span><span class="twist"></span><span class="twist"></span><span class="twist"></span>');
+    
+    $(".twist").css("width", "25%").css("width", "+=3px");
+});
+    </script>
+</body>
+</html>
